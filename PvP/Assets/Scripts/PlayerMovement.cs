@@ -12,9 +12,9 @@ public class PlayerMovement : MonoBehaviour
      * professer link: https://www.udemy.com/user/rick-davidson-5/
      */
     //to control the speed of the player
-    [SerializeField] float runSpeed = 10f; 
-    [SerializeField] float jumpSpeed = 5f;
-    [SerializeField] float climbSpeed = 5f;
+    [SerializeField] public float runSpeed = 10f; 
+    [SerializeField] public float jumpSpeed = 5f;
+    [SerializeField] public float climbSpeed = 5f;
     
     [SerializeField] private GameObject bullets;
     [SerializeField] private Transform bulletrespawning;
