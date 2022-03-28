@@ -8,7 +8,7 @@ public class SpeedPowerUp : MonoBehaviour
 
     //plays power up sound
     //bug: not working
-    private AudioSource powerUpSound;
+    public AudioSource powerUpSound;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,13 +17,14 @@ public class SpeedPowerUp : MonoBehaviour
             Debug.Log("Powerup was touched");
             GameObject player = collision.gameObject;
             PlayerMovement playerScript = player.GetComponent<PlayerMovement>();
+            powerUpSound.Play();
 
-            if (playerScript)
-            {
-                powerUpSound.Play();
+            // if (playerScript)
+            // {
+                
                 playerScript.runSpeed += increase;
                 Destroy(gameObject);
-            }
+            // }
         }
     }
 
@@ -33,6 +34,7 @@ public class SpeedPowerUp : MonoBehaviour
     void Start()
     {
         powerUpSound = GetComponent<AudioSource>();
+        powerUpSound.Play();
     }
 
     // Update is called once per frame
