@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
      * https://www.udemy.com/course/unitycourse/
      * professer link: https://www.udemy.com/user/rick-davidson-5/
      */
+    
     //to control the speed of the player
     [SerializeField] public float runSpeed = 10f; 
     [SerializeField] public float jumpSpeed = 5f;
