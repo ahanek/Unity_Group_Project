@@ -5041,7 +5041,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 643387457}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4cb0ea6f61f75db49ab999d5db7d7d2f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
@@ -14156,6 +14156,10 @@ PrefabInstance:
       propertyPath: footStepSound
       value: 
       objectReference: {fileID: 1024869427}
+    - target: {fileID: 1224600412733300906, guid: 5f9be19c16c1e0840b4a7a7e30334f11, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 4cb0ea6f61f75db49ab999d5db7d7d2f, type: 2}
     - target: {fileID: 1224600412733300906, guid: 5f9be19c16c1e0840b4a7a7e30334f11, type: 3}
       propertyPath: m_IsTrigger
       value: 0
