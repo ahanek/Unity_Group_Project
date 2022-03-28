@@ -6,6 +6,10 @@ public class SpeedPowerUp : MonoBehaviour
 {
     public float increase = 5f;
 
+    //plays power up sound
+    //bug: not working
+    private AudioSource powerUpSound;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -16,6 +20,7 @@ public class SpeedPowerUp : MonoBehaviour
 
             if (playerScript)
             {
+                powerUpSound.Play();
                 playerScript.runSpeed += increase;
                 Destroy(gameObject);
             }
@@ -27,7 +32,7 @@ public class SpeedPowerUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        powerUpSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,4 +40,5 @@ public class SpeedPowerUp : MonoBehaviour
     {
         
     }
+
 }

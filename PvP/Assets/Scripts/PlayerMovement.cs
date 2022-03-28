@@ -30,6 +30,10 @@ public class PlayerMovement : MonoBehaviour
 
     Animator animation;
 
+    [SerializeField] private AudioSource footStepSound;
+    [SerializeField] private AudioSource gunShotSound;
+    [SerializeField] private AudioSource jumpSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     
     void OnFire(InputValue value)
     {
+        gunShotSound.Play();
         Instantiate(bullets, bulletrespawning.position, transform.rotation);
     }
 
@@ -68,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (value.isPressed)
         {
+            jumpSound.Play();
             rigidBody.velocity += new Vector2(0f, jumpSpeed);
         }
     }
@@ -117,5 +123,10 @@ public class PlayerMovement : MonoBehaviour
         bool playerClimbingSpeed = Mathf.Abs(rigidBody.velocity.y) >0.0;
         //change climb latter animation
         animation.SetBool("isClimbing", playerClimbingSpeed);
+    }
+
+    private void Footstep()
+    {
+        footStepSound.Play();
     }
 }
