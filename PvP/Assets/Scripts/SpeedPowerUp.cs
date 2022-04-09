@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpeedPowerUp : MonoBehaviour
 {
     public float increase = 5f;
+    public float duration = 5f;
 
     //plays power up sound
     //bug: not working
@@ -12,20 +13,35 @@ public class SpeedPowerUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
-            Debug.Log("Powerup was touched");
-            GameObject player = collision.gameObject;
-            PlayerMovement playerScript = player.GetComponent<PlayerMovement>();
+            //Debug.Log("Powerup was touched");
+            //GameObject player = collision.gameObject;
+            StartCoroutine( Pickup(collision));
             powerUpSound.Play();
 
-            // if (playerScript)
-            // {
-                
-                playerScript.runSpeed += increase;
-                Destroy(gameObject);
-            // }
+            
+            
         }
+    }
+
+    //pick up method
+    IEnumerator Pickup(Collider2D player)
+    {
+        PlayerMovement playerScript = player.GetComponent<PlayerMovement>();
+
+        //increases speed    
+        playerScript.runSpeed += increase;
+
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<CircleCollider2D>().enabled = false;
+
+        //wait
+        yield return new WaitForSeconds(duration);
+
+        //powerup fades away
+        playerScript.runSpeed -= increase;
+        Destroy(gameObject);
     }
 
 
