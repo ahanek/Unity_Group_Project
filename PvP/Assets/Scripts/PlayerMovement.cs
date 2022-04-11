@@ -128,6 +128,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Footstep()
     {
-        footStepSound.Play();
+        //footStepSound.Play();
     }
 }
