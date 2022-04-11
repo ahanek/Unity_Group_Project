@@ -912,9 +912,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1338388611}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 4b9b6428dbe8b4948bd63019ae9f839f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+  m_Script: {fileID: 11500000, guid: e2b60a193a5e247e4a59e2b7f12e1823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usernameInput: {fileID: 401795330}
+  buttonText: {fileID: 568733327}
+>>>>>>> 51bc4da1 (Game server was create, and players can join availble rooms for multiplayer. The multiplayer part is still buggy and still working on getting it to work.)
 --- !u!4 &1338388613
 Transform:
   m_ObjectHideFlags: 0
