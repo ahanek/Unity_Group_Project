@@ -11,6 +11,7 @@ public class Shooting : MonoBehaviour
     private PlayerMovement _playerPrefs;
     // Start is called before the first frame update
     private float localxSpeed;
+    [SerializeField] private float attackDamage = 1f;
     
 
     void Start()
@@ -29,6 +30,14 @@ public class Shooting : MonoBehaviour
         _rigidbody.velocity = new Vector2(localxSpeed, 0f);
     }
 
+    //method for when bullet touches player
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerHealth>().UpdateHealth(-attackDamage);
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
