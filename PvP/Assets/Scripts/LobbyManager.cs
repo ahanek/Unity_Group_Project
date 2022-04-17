@@ -17,9 +17,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public RoomItem roomItemPrefab;
     private List<RoomItem> _roomItemsList = new List<RoomItem>();
     public Transform contentObject;
-    public float timeBetweenUpdates = 1.5f;
+    private float timeBetweenUpdates = 1.5f;
     private float nextUpdateTime;
-    public PhotonView playerPrefab;
+    private PhotonView playerPrefab;
     
     private void Start()
     {
@@ -39,10 +39,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(false);
         roomPanel.SetActive(true);
         //display the current room
-        PhotonNetwork.LoadLevel("SampleScene");
-        PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
-        //SceneManager.LoadScene("SampleScene");
-        //roomName.text = "Room Name: " + PhotonNetwork.CurrentRoom.Name;
+        // PhotonNetwork.LoadLevel("SampleScene");
+        // PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+        SceneManager.LoadScene("SampleScene");
+        roomName.text = "Room Name: " + PhotonNetwork.CurrentRoom.Name;
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -62,6 +62,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             Destroy(item.gameObject);
         }
         
+        
         _roomItemsList.Clear();
 
         foreach (RoomInfo room in list)
@@ -69,9 +70,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             RoomItem newRoom =Instantiate(roomItemPrefab, contentObject);
             newRoom.SetRoomName(roomName.name);
             _roomItemsList.Add(newRoom);
-        }
-        {
-            
         }
     }
 

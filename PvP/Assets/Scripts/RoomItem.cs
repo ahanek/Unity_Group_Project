@@ -6,12 +6,15 @@ using UnityEngine.UI;
 
 public class RoomItem : MonoBehaviour
 {
-    public Text roomName;
+    private Text roomName;
     private LobbyManager manager;
 
     public void SetRoomName(string _roomName)
     {
-        roomName.text = _roomName;
+        GameObject inputFieldGo = GameObject.Find("CreateInputField");
+        var inputFieldCo = inputFieldGo.GetComponent<InputField>().text;
+        roomName.text = inputFieldCo;
+        //roomName.text = _roomName;
     }
 
     private void Start()
