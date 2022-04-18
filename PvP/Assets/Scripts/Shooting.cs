@@ -30,6 +30,7 @@ public class Shooting : MonoBehaviour
         _rigidbody.velocity = new Vector2(localxSpeed, 0f);
     }
 
+    /*
     //method for when bullet touches player
     private void OnCollisionStay2D(Collision2D other)
     {
@@ -37,10 +38,14 @@ public class Shooting : MonoBehaviour
         {
             other.gameObject.GetComponent<PlayerHealth>().UpdateHealth(-attackDamage);
         }
-    }
+    }*/
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        if (col.gameObject.tag == "Player")
+        {
+            col.gameObject.GetComponent<PlayerHealth>().UpdateHealth(-attackDamage);
+        }
         Destroy(gameObject);
     }
 }

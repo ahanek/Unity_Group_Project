@@ -25,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
         {
             health = 0f;
             Debug.Log("Player Died");
+            Destroy(gameObject);
         }
     }
 }
