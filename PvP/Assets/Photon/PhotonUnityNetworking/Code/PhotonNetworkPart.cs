@@ -2545,9 +2545,7 @@ namespace Photon.Pun
                     Debug.LogWarning("The 'dev region' (" + PhotonServerSettings.DevRegion + ") was not found in the enabled regions, the first enabled region is picked (" + _finalDevRegion + ")");
                 }
 
-                //PhotonNetwork.NetworkingClient.ConnectToRegionMaster(_finalDevRegion);
-                PhotonNetwork.NetworkingClient.ConnectToRegionMaster("us");
-                
+                PhotonNetwork.NetworkingClient.ConnectToRegionMaster(_finalDevRegion);
                 return;
             }
 #endif
