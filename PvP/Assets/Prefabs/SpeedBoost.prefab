@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 201782979528404227}
   - component: {fileID: 201782979528404226}
   - component: {fileID: 201782979528404253}
-  - component: {fileID: 201782979528404224}
   - component: {fileID: 201782979528404225}
   m_Layer: 0
   m_Name: SpeedBoost
@@ -101,19 +100,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &201782979528404224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201782979528404252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b17207f7112073a42a11d2036933ed1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  increase: 5
 --- !u!82 &201782979528404225
 AudioSource:
   m_ObjectHideFlags: 0

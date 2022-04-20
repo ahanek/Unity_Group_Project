@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float runSpeed = 10f; 
     [SerializeField] public float jumpSpeed = 5f;
     [SerializeField] public float climbSpeed = 5f;
-    
+
     [SerializeField] private GameObject bullets;
     [SerializeField] private Transform bulletrespawning;
     // for x and y movement
@@ -28,6 +28,14 @@ public class PlayerMovement : MonoBehaviour
     CapsuleCollider2D capsuleCollider2D;
     //stop player sliding off the ladder
     float gravityScaleAtStart;
+
+    //bullet counter
+    [SerializeField] public int bulletCount;
+    //bullet timer
+    private static int delayTime = 1000;
+    [SerializeField] public int timer = delayTime;
+    public bool timerEnabled = false;
+    public GameObject bulletObj;
 
     Animator animation;
 
@@ -43,12 +51,19 @@ public class PlayerMovement : MonoBehaviour
         //for stopping multijumping
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         gravityScaleAtStart = rigidBody.gravityScale;
+        bulletCount = 1;
+        bulletObj = GameObject.FindGameObjectWithTag("Bullet");
     }
     
     void OnFire(InputValue value)
     {
-        gunShotSound.Play();
-        Instantiate(bullets, bulletrespawning.position, transform.rotation);
+        if(bulletCount > 0)
+        {
+            gunShotSound.Play();
+            Instantiate(bullets, bulletrespawning.position, transform.rotation);
+            bulletCount--;
+        }
+        
     }
 
     // Update is called once per frame
@@ -57,6 +72,17 @@ public class PlayerMovement : MonoBehaviour
         Run();
         FlipSprite();
         ClimbLadder();
+
+        if(timerEnabled)
+        {
+            timer--;
+            if(timer < 0)
+            {
+                timerEnabled = false;
+                timer = delayTime;
+                bulletObj.SetActive(true);
+            }
+        }
     }
 
 
@@ -129,5 +155,11 @@ public class PlayerMovement : MonoBehaviour
     private void Footstep()
     {
         footStepSound.Play();
+    }
+
+    public void startTimer()
+    {
+        bulletObj.SetActive(false);
+        timerEnabled = true;
     }
 }
