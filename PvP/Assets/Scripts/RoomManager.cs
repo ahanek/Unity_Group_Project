@@ -4,6 +4,8 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 using System.IO;
+using Unity.Mathematics;
+using Random = UnityEngine.Random;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
@@ -36,7 +38,19 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         if(scene.buildIndex == 1) // We're in the game scene
         {
-            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+            
+            //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+            //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), transform.position, Quaternion.identity);
+            // PhotonNetwork.Instantiate("PlayerController", new Vector2(Random.Range(-18f, 11f), transform.position.y),
+            //     quaternion.identity);           
+            // PhotonNetwork.Instantiate("PlayerController", new Vector2(Random.Range(-18f, 11f), transform.position.y),
+            //     quaternion.identity);
+            
+            PhotonNetwork.Instantiate("PlayerController", new Vector2(-11f, 20f),
+                quaternion.identity); 
+
+            //-18 - 8
+
         }
     }
-}
+} 

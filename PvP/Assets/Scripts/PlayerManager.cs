@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System.IO;
+using Unity.Mathematics;
+using Random = UnityEngine.Random;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviourPunCallbacks
 {
     PhotonView PV;
 
@@ -25,7 +27,12 @@ public class PlayerManager : MonoBehaviour
 
     void CreateController()
     {
-        // Transform spawnpoint = SpawnManager.Instance.GetSpawnpoint();
+        PhotonNetwork.Instantiate("PlayerController", new Vector2(-11f, 20f),
+            quaternion.identity);        
+        //PhotonNetwork.Instantiate("PlayerController", new Vector2(Random.Range(-18f, 11f), Random.Range(3f, 24f)),
+          //  quaternion.identity);
+        // PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), Vector3.zero, Quaternion.identity);
+        //  Transform spawnpoint = SpawnManager.Instance.GetSpawnpoint();
         // controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnpoint.position, spawnpoint.rotation, 0, new object[] { PV.ViewID });
     }
 
