@@ -41,7 +41,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         //display the current room
         // PhotonNetwork.LoadLevel("SampleScene");
         // PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
-        SceneManager.LoadScene("SampleScene");
+        //SceneManager.LoadScene("SampleScene");
         roomName.text = "Room Name: " + PhotonNetwork.CurrentRoom.Name;
     }
 
@@ -68,6 +68,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         foreach (RoomInfo room in list)
         {
             RoomItem newRoom =Instantiate(roomItemPrefab, contentObject);
+            //newRoom.SetRoomName(roomName.name);
             newRoom.SetRoomName(roomName.name);
             _roomItemsList.Add(newRoom);
         }
